@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="กรอกข้อมูลให้ถูกต้อง">
+<head>
+    <meta charset="UTF-8">
+    <meta name="DMI" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+     <h2>💗 โปรแกรมคำนวณ BMI 💗</h2>
+
+    น้ำหนัก (กก.) : 
+<input type="number" id="weight" min="1"><br><br>
+
+ส่วนสูง (ซม.) : 
+<input type="number" id="height" min="1"><br><br>
+
+<button onclick="calBMI()">คำนวณ</button>
+
+<p id ="result"></p>
+
+<script>
+
+function calBMI() {
+    
+    var w = parseFloat(document.getElementById("weight").value);
+    var h = parseFloat(document.getElementById("height").value);
+
+    if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) {
+        document.getElementById("result").innerHTML = "กรอกข้อมูล";
+        return;
+    }
+
+    h = h / 100; // แปลงเป็นเมตร
+    var bmi = w / (h * h);
+    var text = "";
+
+    if (bmi < 18.5) {
+        text = "ผอม";
+    } else if (bmi <= 22.9) {
+        text = "ปกติ";
+    } else if (bmi <= 24.9) {
+        text = "น้ำหนักเกิน";
+    } else {
+        text = "อ้วน";
+    }
+
+    document.getElementById("result").innerHTML =
+        "BMI = " + bmi.toFixed(2) + " (" + text + ")";
+}
+</script>
+
+</body>
+</html>
